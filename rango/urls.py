@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 30 10:22:44 2023
-
-@author: yiqin
-"""
-
 from django.urls import path
 from rango import views
 from django.conf import settings 
@@ -13,13 +6,13 @@ from django.conf.urls.static import static
 
 app_name = 'rango'
 
-'''
-urlpatterns = [
-    path('', views.index, name='index'),
-]
-'''
+
 urlpatterns = [ 
     path('', views.index, name='index'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('about/', views.about, name="about"),
+    path('category/<slug:category_name_slug>/', views.show_category, name='show_category'), 
+	path('add_category/', views.add_category, name='add_category'),
+]
 
-
+#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #views.show_category, name='show_category'),
